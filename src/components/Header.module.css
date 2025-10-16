@@ -1,0 +1,22 @@
+.header{
+    border: 1px solid red;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo{
+    width: 120px;
+    height: 120px;
+}
+
+.nav{
+    display: flex;
+    align-items: center;
+    gap: 2rem   ;
+}
+
+.lista{
+    display: flex;
+    gap: 2rem;
+}
