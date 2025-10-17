@@ -1,0 +1,14 @@
+.button {
+    background-color:#2563eb;
+    font-weight: 500;
+}
+
+.button:hover{
+    background-color: #1d4ed8;
+}
+
+.button svg {
+
+    margin: auto;
+}
+
