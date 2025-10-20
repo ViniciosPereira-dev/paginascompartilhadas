@@ -10,11 +10,11 @@ import ButtonSingIn from "../ButtonSingIn/ButtonSingIn";
 export default function Header() {
   return (
     <header className={styles.header}>
-      <div>
+      <div className={styles.logo}>
         <Logo />
       </div>
 
-      <div>
+      <div className={styles.navBar}>
         <NavLinks />
       </div>
 

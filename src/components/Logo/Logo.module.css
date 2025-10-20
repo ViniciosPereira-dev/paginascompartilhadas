@@ -1,17 +1,6 @@
-.logoContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: transform 0.2s ease-in-out;
-}
 
-
-.logoContainer:hover {
-  transform: scale(1.05);
-}
-
-.logoImage {
-  object-fit: contain;
-  user-select: none;
+.logoImage{
+    object-fit: cover;
+    min-width: 120px;
+    height: 120px;
 }

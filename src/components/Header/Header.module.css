@@ -13,4 +13,18 @@
   justify-content: end;
   flex: 1;
   gap: 0.5rem;
+  opacity: 1 ;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
 }
+
+
+@media (max-width: 1100px) {
+
+  .actions, .navBar{
+    opacity: 0;
+    visibility: hidden;    
+  }
+}
+
+
+
