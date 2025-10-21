@@ -1,104 +1,98 @@
+/*Header Mobile*/
+@media (max-width: 768px) {
+
 .header {
   display: flex;
   align-items: center;
-  padding: 0rem 1.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  position: relative; /* 👈 necessário pro dropdown funcionar */
-  z-index: 10;
+  justify-content: space-between;
+  padding: 0.5rem 1.5rem;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  position: relative;
+  z-index: 100;
 }
 
-.nav {
-  display: flex;
-  flex: 1;
-}
-
-.actions {
-  display: flex;
-  gap: 0.5rem;
-  opacity: 1 ;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
-}
-
-<<<<<<< HEAD
-
-@media (max-width: 1100px) {
-
-  .actions, .navBar{
-    opacity: 0;
-    visibility: hidden;    
-  }
-}
-
-
-
-=======
-.menuButton {
+/* HAMBURGUER */
+.hamburger {
+  position: relative;
+  width: 30px;
+  height: 22px;
   display: none;
+  flex-direction: column;
+  justify-content: space-between;
   background: none;
   border: none;
   cursor: pointer;
+  z-index: 200;
 }
 
-.logoContainer {
-  flex-shrink: 0;
+.hamburger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: #111;
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.sidebarContainer {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  height: 100vh;
+
+  background: #fff;
+  transition: left 0.3s ease;
+  z-index: 150;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  border-radius: 12px;
+  
 }
 
-/* 🔽 Responsividade */
-@media (max-width: 1024px) {
-  .menuButton {
-    display: flex;
-    justify-content: end;
-    flex: 1;
-  }
+.sidebarContainer.open {
+  left: 0;
+}
 
-  .nav,
-  .actions {
+/* ====== BACKDROP ====== */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 120;
+  transition: opacity 0.3s ease;
+}
+
+
+  .navDesktop {
     display: none;
-
   }
 
-  .nav a {
-    font-size: 0.8rem;
-  }
-
-  /* Quando o menu está aberto */
-  .active {
+  .hamburger {
     display: flex;
-    align-items: center;
-    flex-direction: column;
-    position: absolute;
-    top: 100%; /* aparece logo abaixo do header */
-    right: 0;
-    width: 100%;
-    background: white;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-    animation: slideDown 0.3s ease;
-    z-index: 5;
-
-  }
-  /* Efeitos do menu */
-  @keyframes slideDown {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
   }
 
-  /* Exibe também as ações dentro do menu */
-  .active .actions {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-top: 1rem;
-
+  .logoContainer{
+    width: 80px;
+    height: auto;
   }
+
 }
->>>>>>> db875b1 (att)
+/*Header Mobile Fim*/
+
+
+
+
+
+
+

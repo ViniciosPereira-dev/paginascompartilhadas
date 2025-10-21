@@ -1,58 +1,71 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Menu, X } from "lucide-react";
 import styles from "./Header.module.css";
 import NavLinks from "../NavLinks/NavLinks";
 import SearchInput from "../SearchBar/SearchBar";
 import ButtonLogin from "../ButtonLogin/ButtonLogin";
 import ButtonSingIn from "../ButtonSingIn/ButtonSingIn";
+import { DefaultSidebar } from "../DefaultSidebar/DefaultSidebar";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  // Impede o scroll da página quando o menu está aberto
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "auto";
+  }, [menuOpen]);
+
   return (
-    <header className={styles.header}>
-<<<<<<< HEAD
-      <div className={styles.logo}>
-        <Logo />
-      </div>
-
-      <div className={styles.navBar}>
-=======
-      <div className={styles.logoContainer}>
-        <Image
-          src="/imagens/logo.png"
-          alt="Logo"
-          width={120}
-          height={40}
-          priority
-          className={styles.logo}
-        />
-      </div>
-
-      {/* MENU (links + ações) */}
-      <nav className={`${styles.nav} ${menuOpen ? styles.active : ""}`}>
-        <div className={styles.nav_Mobile}>
->>>>>>> db875b1 (att)
-        <NavLinks />
+    <>
+      <header className={styles.header}>
+        {/* LOGO */}
+        <div className={styles.logoContainer}>
+          <Image
+            src="/imagens/logo.png"
+            alt="Logo"
+            width={120}
+            height={40}
+            priority
+            className={styles.logo}
+          />
         </div>
-                  <SearchInput />
-        <div className={styles.actions}>
-          <ButtonLogin />
-          <ButtonSingIn />
-        </div>
-      </nav>
 
-      {/* BOTÃO HAMBURGUER */}
-      <button
-        className={styles.menuButton}
-        onClick={() => setMenuOpen(!menuOpen)}
-        aria-label="Abrir menu"
-      >
-        {menuOpen ? <X size={28} /> : <Menu size={28} />}
-      </button>
-    </header>
+        {/* NAV DESKTOP */}
+        <nav className={styles.navDesktop}>
+          <NavLinks />
+          <SearchInput />
+          <div className={styles.actions}>
+            <ButtonLogin />
+            <ButtonSingIn />
+          </div>
+        </nav>
+
+        {/* BOTÃO HAMBÚRGUER */}
+        <button
+          className={`${styles.hamburger} ${menuOpen ? styles.active : ""}`}
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </header>
+
+      {/* SIDEBAR — AGORA VINDO DA ESQUERDA */}
+      <aside className={`${styles.sidebarContainer} ${menuOpen ? styles.open : ""}`}>
+        <DefaultSidebar />
+      </aside>
+
+      {/* BACKDROP */}
+      {menuOpen && (
+        <div
+          className={styles.backdrop}
+          onClick={() => setMenuOpen(false)}
+        ></div>
+      )}
+    </>
   );
 }
