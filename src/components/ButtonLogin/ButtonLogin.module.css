@@ -2,7 +2,7 @@
   background-color: #2563eb;
   border: none;
   color: white;
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem 0.5rem;
   border-radius: 0.5rem;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -10,6 +10,10 @@
 
 .button:hover {
   background-color: #1d4ed8;
+<<<<<<< HEAD
+=======
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+>>>>>>> db875b1 (att)
   transform: translateY(-1px);
 }
 
