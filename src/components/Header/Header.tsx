@@ -5,9 +5,10 @@ import Image from "next/image";
 import styles from "./Header.module.css";
 import NavLinks from "../NavLinks/NavLinks";
 import SearchInput from "../SearchBar/SearchBar";
-import ButtonLogin from "../ButtonLogin/ButtonLogin";
+import { LoginModal } from "../LoginModal/LoginModal";
 import ButtonSingIn from "../ButtonSingIn/ButtonSingIn";
 import { DefaultSidebar } from "../DefaultSidebar/DefaultSidebar";
+
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -37,12 +38,12 @@ export default function Header() {
           <NavLinks />
           <SearchInput />
           <div className={styles.actions}>
-            <ButtonLogin />
+            <LoginModal/>
             <ButtonSingIn />
           </div>
         </nav>
 
-        {/* BOTÃO HAMBÚRGUER */}
+        {/* BOTÃO HAMBURGUER */}
         <button
           className={`${styles.hamburger} ${menuOpen ? styles.active : ""}`}
           onClick={() => setMenuOpen(!menuOpen)}
@@ -54,7 +55,7 @@ export default function Header() {
         </button>
       </header>
 
-      {/* SIDEBAR — AGORA VINDO DA ESQUERDA */}
+      {/* SIDEBAR */}
       <aside className={`${styles.sidebarContainer} ${menuOpen ? styles.open : ""}`}>
         <DefaultSidebar />
       </aside>

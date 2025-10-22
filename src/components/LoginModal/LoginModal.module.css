@@ -1,0 +1,14 @@
+.btnLogin {
+  background-color: #2563eb;
+  border: none;
+  color: white;
+  padding: 0.5rem 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btnLogin:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-1px);
+}

@@ -1,0 +1,40 @@
+.btnContainer{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.btnAnimated {
+  position: relative;
+  border: 2px solid #fff;
+  color: #fff;
+  padding: 0.9rem 2rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  background: transparent;
+  border-radius: 0.6rem;
+  z-index: 1;
+}
+
+.btnAnimated::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+  z-index: -1;
+  border-radius: 0.6rem;
+}
+
+.btnAnimated:hover::before {
+  transform: scaleX(1);
+}
+
+.btnAnimated:hover {
+  color: #000;
+}
