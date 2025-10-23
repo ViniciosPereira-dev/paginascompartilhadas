@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import styles from "./LoginModal.module.css"
 import { LogIn } from "lucide-react";
@@ -51,14 +52,11 @@ export function LoginModal() {
             </Button>
             <Typography variant="small" className="mt-4 flex justify-center">
               Não possui conta?
-              <Link href="/cadastro" passHref>
-                <Typography
-                  as="a"
-                  variant="small"
-                  className={styles.btnCadastrar}
-                >
-                  Cadastrar
-                </Typography>
+              <Link href="/cadastro" 
+              className={styles.btnCadastrar}
+              onClick={() => setOpen(false)} 
+              >
+              Cadastrar
               </Link>
             </Typography>
           </CardFooter>
