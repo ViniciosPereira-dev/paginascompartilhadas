@@ -19,7 +19,7 @@ export function LoginModal() {
  
   return (
     <>
-      <Button onClick={handleOpen} className={styles.btnLogin}><LogIn size={22} /></Button>
+      <Button title="Entrar" onClick={handleOpen} className={styles.btnLogin}><LogIn size={22}/></Button>
       <Dialog
         size="xs"
         open={open}
@@ -28,34 +28,33 @@ export function LoginModal() {
       >
         <Card className="mx-auto w-full max-w-[24rem]">
           <CardBody className="flex flex-col gap-4">
-            <Typography variant="h4" color="blue-gray">
-              Sign In
+            <Typography variant="h4" color="blue-gray" className={styles.modalTittle} >
+              Entrar
             </Typography>
             <Typography
               className="mb-3 font-normal"
               variant="paragraph"
               color="gray"
             >
-              Enter your email and password to Sign In.
             </Typography>
             <Typography className="-mb-2" variant="h6">
-              Your Email
+              Seu E-mail
             </Typography>
-            <Input label="Email" size="lg" />
+            <Input label="E-mail" size="lg" />
             <Typography className="-mb-2" variant="h6">
-              Your Password
+              Sua Senha
             </Typography>
-            <Input label="Password" size="lg" />
+            <Input label="Senha" size="lg" />
             <div className="-ml-2.5 -mt-3">
-              <Checkbox label="Remember Me" />
+              <Checkbox label="Manter conectado" />
             </div>
           </CardBody>
           <CardFooter className="pt-0">
             <Button variant="gradient" onClick={handleOpen} fullWidth>
-              Sign In
+              Entrar
             </Button>
             <Typography variant="small" className="mt-4 flex justify-center">
-              Don&apos;t have an account?
+              Não possui conta?
               <Typography
                 as="a"
                 href="#signup"
@@ -64,7 +63,7 @@ export function LoginModal() {
                 className="ml-1 font-bold"
                 onClick={handleOpen}
               >
-                Sign up
+                Cadastrar
               </Typography>
             </Typography>
           </CardFooter>

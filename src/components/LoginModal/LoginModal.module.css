@@ -12,3 +12,9 @@
   background-color: #1d4ed8;
   transform: translateY(-1px);
 }
+
+.modalTittle{
+  text-align: center;
+  font-size: 2rem;
+  
+}
