@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./LoginModal.module.css"
 import { LogIn } from "lucide-react";
+import Link from "next/link";
 import {
   Button,
   Dialog,
@@ -27,44 +28,38 @@ export function LoginModal() {
         className="bg-transparent shadow-none"
       >
         <Card className="mx-auto w-full max-w-[24rem]">
-          <CardBody className="flex flex-col gap-4">
-            <Typography variant="h4" color="blue-gray" className={styles.modalTittle} >
+          <CardBody className="flex flex-col gap-4 blue-gray-400">
+            <Typography variant="h4" className={styles.modalTittle} >
               Entrar
             </Typography>
-            <Typography
-              className="mb-3 font-normal"
-              variant="paragraph"
-              color="gray"
-            >
-            </Typography>
+
             <Typography className="-mb-2" variant="h6">
               Seu E-mail
             </Typography>
-            <Input label="E-mail" size="lg" />
+            <Input label="E-mail" size="lg" color="blue"/>
             <Typography className="-mb-2" variant="h6">
               Sua Senha
             </Typography>
-            <Input label="Senha" size="lg" />
+            <Input label="Senha" size="lg" color="blue"/>
             <div className="-ml-2.5 -mt-3">
-              <Checkbox label="Manter conectado" />
+              <Checkbox label="Manter conectado" color="blue"/>
             </div>
           </CardBody>
           <CardFooter className="pt-0">
-            <Button variant="gradient" onClick={handleOpen} fullWidth>
+            <Button onClick={handleOpen} fullWidth className={styles.btnEntrar}>
               Entrar
             </Button>
             <Typography variant="small" className="mt-4 flex justify-center">
               Não possui conta?
-              <Typography
-                as="a"
-                href="#signup"
-                variant="small"
-                color="blue-gray"
-                className="ml-1 font-bold"
-                onClick={handleOpen}
-              >
-                Cadastrar
-              </Typography>
+              <Link href="/cadastro" passHref>
+                <Typography
+                  as="a"
+                  variant="small"
+                  className={styles.btnCadastrar}
+                >
+                  Cadastrar
+                </Typography>
+              </Link>
             </Typography>
           </CardFooter>
         </Card>

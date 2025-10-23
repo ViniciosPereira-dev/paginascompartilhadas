@@ -19,6 +19,7 @@ import {
   PlusCircle,
   User,
   MessageSquare,
+  Building2,
 } from "lucide-react";
 import SearchInput from "../SearchBar/SearchBar";
 import styles from "./DefaultSidebar.module.css";
@@ -35,6 +36,7 @@ export function DefaultSidebar() {
     { href: "/doar", label: "Doar Livro", icon: PlusCircle },
     { href: "/perfil", label: "Perfil", icon: User },
     { href: "/forum", label: "Fórum", icon: MessageSquare },
+    { href: "/#instituicoes", label: "instituições", icon: Building2, id: "instituicoes" },
     { href: "/#eventos", label: "Eventos", icon: Calendar, id: "eventos" },
     { href: "/#sobre", label: "Sobre", icon: Info, id: "sobre" },
     { href: "/#faq", label: "FAQ", icon: HelpCircle, id: "faq" },
@@ -66,7 +68,7 @@ export function DefaultSidebar() {
       <div className="flex flex-col items-center py-6 border-b border-blue-100">
         <div className="w-20 h-20 rounded-full overflow-hidden border border-gray-300">
           <img
-            src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+            src="imagens/avatar.svg"
             alt="Usuário padrão"
             className="w-full h-full object-cover"
           />

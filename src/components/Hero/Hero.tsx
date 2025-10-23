@@ -2,7 +2,7 @@ import styles from "./Hero.module.css";
 
 export default function Hero() {
   return (
-    <section className={styles.heroMobile}>
+    <section id="hero" className={styles.heroMobile}>
       <div className="relative z-10 text-center text-white flex flex-col items-center justify-center h-[80vh] px-4">
         <h1 className="text-3xl font-bold mb-3 drop-shadow-md">
           Conecte-se através dos livros

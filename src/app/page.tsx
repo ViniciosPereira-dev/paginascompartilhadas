@@ -1,5 +1,10 @@
 import Hero from "@/components/Hero/Hero";
 import SecaoEventos from "@/components/SecaoEventos/SecaoEventos";
+import SecaoInstituicoesProximas from "../components/SecaoInstituicoesProximas/InstituicoesProximas"
+import SecaoSobre from "@/components/SecaoSobre/SecaoSobre";
+import SecaoFAQ from "@/components/SecaoFAQ/SecaoFAQ";
+import { Footer } from "@/components/Footer/Footer";
+
 
 export default function Home() {
   const eventos = [
@@ -26,7 +31,11 @@ export default function Home() {
   return (
     <main>
       <Hero />
+      <SecaoInstituicoesProximas />      
       <SecaoEventos eventos={eventos} />
+      <SecaoSobre/>
+      <SecaoFAQ/>
+      <Footer/>
     </main>
   );
 }

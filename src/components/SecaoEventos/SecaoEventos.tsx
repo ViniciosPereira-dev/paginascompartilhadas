@@ -6,11 +6,11 @@ import styles from "./SecaoEventos.module.css";
 
 export default function SecaoEventos({ eventos }) {
   return (
-    <section id="eventos" className="px-4 py-8 bg-gray-50">
+    <section id="eventos" className="px-4 pt-8 bg-gray-50">
       <div className="mb-8 text-center sm:text-left">
         <Typography
           variant="h3"
-          className="font-extrabold text-gray-900 tracking-tight"
+          className="font-bold text-gray-700 tracking-tight"
         >
           Próximos Eventos
         </Typography>
@@ -26,7 +26,7 @@ export default function SecaoEventos({ eventos }) {
 
       <Link href="/#eventos">
         <Button variant="text" className={styles.btnVermais}>
-          todos{" "}
+          todos eventos{" "}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
