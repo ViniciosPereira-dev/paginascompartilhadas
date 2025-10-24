@@ -39,7 +39,7 @@ const instituicoesMock = [
     estado: "SP",
     distancia: "3.1 km",
     descricao: "Desenvolve projetos de leitura e conta com um acervo literário aberto ao público.",
-        imagem: "/imagens/card3.jpg",
+    imagem: "/imagens/card3.jpg",
 
   },
   {
