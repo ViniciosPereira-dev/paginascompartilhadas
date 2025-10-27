@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import {  Loader2 } from "lucide-react";
+import {  Loader2, XCircle } from "lucide-react";
 import CardInstituicao from "../CardInstituicao/CardInstituicao";
+
 
 import {
   Card,
@@ -14,52 +15,7 @@ import {
   Spinner,
 } from "@material-tailwind/react";
 
-const instituicoesMock = [
-  {
-    nome: "Biblioteca Esperança",
-    cidade: "Votorantim",
-    estado: "SP",
-    distancia: "1.2 km",
-    descricao: "Promove acesso gratuito à leitura e realiza oficinas literárias para crianças.",
-    imagem: "/imagens/card1.jpg",
-  
-  },
-  {
-    nome: "Casa do Saber",
-    cidade: "Votorantim",
-    estado: "SP",
-    distancia: "2.3 km",
-    descricao: "Espaço comunitário com troca de livros, rodas de leitura e incentivo à escrita.",
-    imagem: "/imagens/card2.jpg",
-
-  },
-  {
-    nome: "Centro Cultural Páginas Vivas",
-    cidade: "Votorantim",
-    estado: "SP",
-    distancia: "3.1 km",
-    descricao: "Desenvolve projetos de leitura e conta com um acervo literário aberto ao público.",
-    imagem: "/imagens/card3.jpg",
-
-  },
-  {
-    nome: "Instituto Leitura Viva",
-    cidade: "Sorocaba",
-    estado: "SP",
-    distancia: "4.5 km",
-    descricao: "Oferece programas de alfabetização e clubes de leitura para todas as idades.",
-
-  },
-  {
-    nome: "Projeto Letras do Amanhã",
-    cidade: "Sorocaba",
-    estado: "SP",
-    distancia: "5.8 km",
-    descricao: "Iniciativa social que distribui livros e promove feiras literárias locais.",
-
-  },
-];
-
+import { instituicoesMock } from "@/data/instituicoes";
 
 export default function InstituicoesProximas() {
   const [cep, setCep] = useState("");
@@ -80,7 +36,6 @@ export default function InstituicoesProximas() {
     setResultados([]);
 
     try {
-      // Consulta o ViaCEP
       const resposta = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
       const dados = await resposta.json();
 
@@ -90,11 +45,9 @@ export default function InstituicoesProximas() {
         return;
       }
 
-      // Pega cidade e estado retornados
       const cidade = dados.localidade;
       const estado = dados.uf;
 
-      // Filtra as instituições da mesma cidade
       const filtradas = instituicoesMock.filter(
         (i) => i.cidade === cidade && i.estado === estado
       );
@@ -108,20 +61,40 @@ export default function InstituicoesProximas() {
     }
   };
 
+  const limparBusca = () => {
+    setCep("");
+    setResultados([]);
+    setBuscou(false);
+    setErro("");
+  };
+
   return (
-    <section id="instituicoes" className="w-full mt-8 flex flex-col items-center gap-8 bg-gray-50">
+    <section className="w-full mt-8 flex flex-col items-center gap-8 bg-gray-50 p-4">
       <Typography variant="h3" className="text-center text-gray-700 font-bold">
         Encontre instituições próximas de você
       </Typography>
 
-      <div className="flex flex-col md:flex-row gap-4 items-center">
-        <Input
-          label="Digite seu CEP"
-          value={cep}
-          onChange={(e) => setCep(e.target.value)}
-          className="w-64 "
-          color="blue"
-        />
+      <div className="flex flex-col md:flex-row gap-4 items-center relative">
+        <div className="relative w-64">
+          <Input
+            label="Digite seu CEP"
+            value={cep}
+            onChange={(e) => setCep(e.target.value)}
+            color="blue"
+            className="pr-10"
+          />
+
+          {cep && (
+            <button
+              onClick={limparBusca}
+              className="absolute right-3 top-2.5 text-gray-500 hover:text-red-500 transition"
+              aria-label="Limpar CEP"
+            >
+              <XCircle size={20} />
+            </button>
+          )}
+        </div>
+
         <Button
           onClick={buscarInstituicoes}
           color="blue"
@@ -132,10 +105,14 @@ export default function InstituicoesProximas() {
         </Button>
       </div>
 
-      {erro && <Typography color="red" className="text-sm">{erro}</Typography>}
+      {erro && (
+        <Typography color="red" className="text-sm">
+          {erro}
+        </Typography>
+      )}
 
       {(loading || buscou) && (
-        <div className="flex flex-wrap justify-center gap-2 mt-4 min-h-[200px] transition-all duration-300">
+        <div className="flex flex-wrap justify-center gap-4 mt-4 min-h-[200px] transition-all duration-300">
           {loading && (
             <div className="flex flex-col items-center justify-center mt-4 animate-fadeIn">
               <Loader2 className="h-10 w-10 text-blue-500 animate-spin" />
@@ -154,8 +131,7 @@ export default function InstituicoesProximas() {
               <CardInstituicao key={index} inst={inst} />
             ))}
         </div>
-      )}
-
+      )}  
     </section>
   );
 }

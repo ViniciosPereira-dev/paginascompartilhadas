@@ -21,7 +21,6 @@ import {
   MessageSquare,
   Building2,
 } from "lucide-react";
-import SearchInput from "../SearchBar/SearchBar";
 import styles from "./DefaultSidebar.module.css";
 import ButtonSingIn from "../ButtonSingIn/ButtonSingIn";
 import { LoginModal } from "../LoginModal/LoginModal";
@@ -32,10 +31,10 @@ export function DefaultSidebar() {
 
   const links = [
     { href: "/#home", label: "Início", icon: Home, id: "" },
-    { href: "/livros", label: "Livros", icon: BookOpen },
     { href: "/doar", label: "Doar Livro", icon: PlusCircle },
     { href: "/perfil", label: "Perfil", icon: User },
     { href: "/forum", label: "Fórum", icon: MessageSquare },
+    { href: "/livrosapi", label: "Livros", icon: BookOpen },
     { href: "/#instituicoes", label: "instituições", icon: Building2, id: "instituicoes" },
     { href: "/#eventos", label: "Eventos", icon: Calendar, id: "eventos" },
     { href: "/#sobre", label: "Sobre", icon: Info, id: "sobre" },
@@ -81,11 +80,6 @@ export function DefaultSidebar() {
         </Typography>
       </div>
 
-      {/* Campo de busca */}
-      <div className={styles.inputSearch}>
-        <SearchInput />
-      </div>
-
       {/* Lista de Navegação */}
       <List className="p-0">
         {links.map(({ href, label, icon: Icon, id }) => {
@@ -93,7 +87,6 @@ export function DefaultSidebar() {
             "/doar",
             "/forum",
             "/comunidade",
-            "/livros",
             "/perfil",
           ].includes(href);
 

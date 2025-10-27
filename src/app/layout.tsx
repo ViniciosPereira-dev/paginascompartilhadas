@@ -1,11 +1,12 @@
-"use client"
+"use client";
 import "../styles/globals.css";
 import Header from "../components/Header/Header";
 import { usePathname } from "next/navigation";
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }) {
   const pathname = usePathname();
-  const mostrarHeader = pathname !== "/cadastro";
+  const esconderHeader = ["/cadastro", "/login"];
+  const mostrarHeader = !esconderHeader.includes(pathname);
 
   return (
     <html lang="pt-br">

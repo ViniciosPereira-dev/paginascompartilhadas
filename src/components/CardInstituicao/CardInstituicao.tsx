@@ -10,6 +10,9 @@ import { MapPin } from "lucide-react";
 
 export default function CardInstituicao({ inst }) {
   return (
+
+  <div className="flex flex-column items-center">
+
     <Card className="w-80 shadow-lg hover:shadow-xl transition-all duration-300">
       {/* IMAGEM */}
       <CardHeader floated={false} shadow={false} className="h-56">
@@ -22,6 +25,7 @@ export default function CardInstituicao({ inst }) {
 
       {/* CONTEÚDO */}
       <CardBody>
+
         <div className="mb-2 flex items-center justify-between">
           <Typography variant="h6" color="blue-gray" className="font-semibold">
             {inst.nome}
@@ -51,6 +55,10 @@ export default function CardInstituicao({ inst }) {
           Ver Perfil
         </Button>
       </CardFooter>
-    </Card>
+    </Card>         
+
+  </div>
+
+
   );
 }

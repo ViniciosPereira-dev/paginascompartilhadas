@@ -52,7 +52,7 @@ export function LoginModal() {
             </Button>
             <Typography variant="small" className="mt-4 flex justify-center">
               Não possui conta?
-              <Link href="/cadastroUsuario" 
+              <Link href="/cadastro" 
               className={styles.btnCadastrar}
               onClick={() => setOpen(false)} 
               >

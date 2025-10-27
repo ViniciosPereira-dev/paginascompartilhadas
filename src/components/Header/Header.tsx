@@ -2,12 +2,13 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./Header.module.css";
 import NavLinks from "../NavLinks/NavLinks";
-import SearchInput from "../SearchBar/SearchBar";
 import { LoginModal } from "../LoginModal/LoginModal";
 import ButtonSingIn from "../ButtonSingIn/ButtonSingIn";
 import { DefaultSidebar } from "../DefaultSidebar/DefaultSidebar";
+
 
 
 export default function Header() {
@@ -23,20 +24,22 @@ export default function Header() {
       <header className={styles.header}>
         {/* LOGO */}
         <div className={styles.logoContainer}>
-          <Image
-            src="/imagens/logo.png"
-            alt="Logo"
-            width={120}
-            height={40}
-            priority
-            className={styles.logo}
-          />
+          <Link href="/">
+            <Image
+              src="/imagens/logo.png"
+              alt="Logo"
+              width={120}
+              height={40}
+              priority
+              className={styles.logo}
+            />
+          </Link>
+
         </div>
 
         {/* NAV DESKTOP */}
         <nav className={styles.navDesktop}>
           <NavLinks />
-          <SearchInput />
           <div className={styles.actions}>
             <LoginModal/>
             <ButtonSingIn />

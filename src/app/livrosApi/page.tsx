@@ -1,44 +1,96 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import TabelaLivros from "@/components/TabelaLivros/TabelaLivros";
-import { useSearchParams } from "next/navigation";
+import { useState } from "react";
+import { livrosMock } from "@/data/livros";
+import SearchInput from "../../components/SearchInput/SearchInput";
+import TabelaLivros from "../../components/TabelaLivros/TabelaLivros";
+import LivroModal from "../../components/LivroModal/LivroModal";
+import LivrosMobile from "@/components/LivrosMobile/LivrosMobile";
+import { motion } from "framer-motion";
 
-const livrosMock = [
-  { titulo: "O Senhor dos Anéis", autor: "J.R.R. Tolkien", genero: "Fantasia", ano: 1954, editora: "HarperCollins" },
-  { titulo: "As Crônicas de Gelo e Fogo", autor: "George R. R. Martin", genero: "Fantasia", ano: 1996, editora: "LeYa" },
-  { titulo: "Dom Casmurro", autor: "Machado de Assis", genero: "Romance", ano: 1899, editora: "Globo" },
-  { titulo: "O Pequeno Príncipe", autor: "Antoine de Saint-Exupéry", genero: "Infantil", ano: 1943, editora: "Agir" },
-  { titulo: "1984", autor: "George Orwell", genero: "Distopia", ano: 1949, editora: "Companhia das Letras" },
-];
 
 export default function LivrosApiPage() {
-  const searchParams = useSearchParams();
-  const busca = searchParams.get("busca") || "";
-
   const [resultados, setResultados] = useState([]);
-
-  useEffect(() => {
-    const filtrados = livrosMock.filter(
-      (livro) =>
-        livro.titulo.toLowerCase().includes(busca.toLowerCase()) ||
-        livro.autor.toLowerCase().includes(busca.toLowerCase()) ||
-        livro.genero.toLowerCase().includes(busca.toLowerCase())
-    );
-    setResultados(filtrados);
-  }, [busca]);
+  const [selectedLivro, setSelectedLivro] = useState(null);
+  const [busca, setBusca] = useState("");
 
   return (
-    <div className="flex flex-col items-center justify-center w-full py-10">
-      <h1 className="text-2xl font-bold mb-6 text-blue-gray-700">
-        Resultados da busca: "{busca}"
+    <motion.div
+      className="p-4 max-w-4xl mx-auto"
+      initial={{ opacity: 0, y: 20 }} // começa levemente abaixo e transparente
+      animate={{ opacity: 1, y: 0 }}  // anima para posição final
+      transition={{ duration: 0.5, ease: "easeOut" }} // duração e suavização
+    >
+      <h1 className="text-2xl md:text-3xl text-gray-700 font-bold mb-6 text-center">
+        Pesquise livros disponíveis
       </h1>
 
-      {resultados.length > 0 ? (
-        <TabelaLivros livros={resultados} />
-      ) : (
-        <p className="text-gray-500 mt-4">Nenhum livro encontrado 😕</p>
+<p className="text-center text-gray-400 mb-6 text-base sm:text-sm">
+  Explore livros doados por instituições e voluntários. Clique em um livro para ver detalhes e solicitar doação.
+</p>
+
+
+
+
+      <SearchInput
+        onSearch={(valor) => {
+          setBusca(valor);
+          const filtrados = livrosMock.filter(
+            (livro) =>
+              livro.titulo.toLowerCase().includes(valor.toLowerCase()) ||
+              livro.autor.toLowerCase().includes(valor.toLowerCase()) ||
+              livro.genero.toLowerCase().includes(valor.toLowerCase())
+          );
+          setResultados(filtrados);
+        }}
+      />
+
+      
+
+      {busca && (
+        <p className="text-sm text-gray-500 mb-4 text-center">
+          {resultados.length > 0
+            ? `Mostrando ${resultados.length} resultado(s) para "${busca}"`
+            : `Nenhum resultado encontrado para "${busca}"`}
+        </p>
       )}
-    </div>
+
+      {busca && (
+        <div className="flex justify-center mb-4">
+          <button
+            onClick={() => {
+              setBusca("");
+              setResultados([]);
+            }}
+            className="text-sm text-blue-500 hover:underline"
+          >
+            Limpar busca
+          </button>
+        </div>
+      )}
+
+
+      <div className="block md:hidden">
+        <LivrosMobile
+          livros={resultados}
+          onSelectLivro={setSelectedLivro}
+          buscou={busca !== ""}
+        />
+      </div>   
+
+      <div className="hidden md:block">
+        <TabelaLivros
+          livros={resultados}
+          onSelectLivro={setSelectedLivro}
+          buscou={busca !== ""}
+        />
+      </div>
+
+      <LivroModal livro={selectedLivro} onClose={() => setSelectedLivro(null)} />
+
+    </motion.div>
+
+
   );
 }
+
