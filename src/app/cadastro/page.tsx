@@ -4,6 +4,7 @@ import { Formik, Form, ErrorMessage } from "formik";
 import { cadastroSchema } from "@/Schemas/cadastroSchema";
 import { Input, Button, Select, Option, Typography } from "@material-tailwind/react";
 import { FcGoogle } from "react-icons/fc";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 export default function CadastroPage() {
@@ -24,25 +25,32 @@ export default function CadastroPage() {
 
   return (
     <>
-      {/* 🔹 Imagem Parallax */}
+      {/* 🔹 Imagem com texto sobreposto e animação leve */}
       <section className="relative w-full h-[50vh] overflow-hidden">
         <div
           className="absolute top-0 left-0 w-full h-full bg-center bg-cover"
-          style={{
-            backgroundImage: "url('/imagens/hero.jpg')",
-            transform: `translateY(0px)`,
-          }}
+          style={{ backgroundImage: "url('/imagens/hero.jpg')" }}
         />
-        <div className="absolute top-0 left-0 w-full h-full bg-black/30" />
+        <div className="absolute top-0 left-0 w-full h-full bg-black/40" />
+
+        {/* Texto animado sobre a imagem */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="absolute inset-0 flex flex-col text-white px-4 pt-4"
+        >
+          <h2 className="text-2xl font-semibold mb-2">
+            Espalhe conhecimento e solidariedade 📚
+          </h2>
+          <p className="text-sm mb-3 max-w-md">
+            Faça parte dessa corrente do bem — conecte-se como doador ou receptor!
+          </p>
+        </motion.div>
       </section>
 
-      {/* 🔹 Formulário com Framer Motion */}
-      <motion.section
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="max-w-md mx-auto -mt-16 bg-white p-6 rounded-t-3xl shadow-lg z-20 relative"
-      >
+      {/* 🔹 Formulário */}
+      <section className="max-w-md mx-auto -mt-16 bg-white p-6 rounded-t-3xl shadow-lg relative z-20">
         <Formik
           initialValues={initialValues}
           validationSchema={cadastroSchema}
@@ -141,13 +149,36 @@ export default function CadastroPage() {
               />
               <ErrorMessage name="endereco" component="div" className="text-red-500 text-sm" />
 
-              <Button type="submit" color="blue" disabled={isSubmitting}>
-                Criar conta
-              </Button>
+            <Button type="submit" color="blue" disabled={isSubmitting}>
+              Criar conta
+            </Button>
 
+            {/* Separador antes das opções sociais */}
+            <div className="flex items-center my-3">
+              <div className="flex-grow h-px bg-gray-300"></div>
+              <span className="px-2 text-gray-500 text-sm">ou</span>
+              <div className="flex-grow h-px bg-gray-300"></div>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              {/* Google */}
               <Button variant="outlined" className="flex items-center justify-center gap-2">
                 <FcGoogle size={22} /> Entrar com Google
               </Button>
+
+              {/* Facebook */}
+              <Button variant="outlined" className="flex items-center justify-center gap-2 text-blue-600">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg"
+                  alt="Facebook"
+                  className="w-5 h-5"
+                />
+                Entrar com Facebook
+              </Button>
+            </div>
+
+
+
             </Form>
           )}
         </Formik>
@@ -155,12 +186,12 @@ export default function CadastroPage() {
         <section className="text-center mt-4">
           <Typography variant="small" className="text-gray-600">
             Já possui uma conta?{" "}
-            <a href="/login" className="text-blue-500 hover:underline">
+            <Link href="/login" className="text-blue-500 hover:underline">
               Faça login
-            </a>
+            </Link>
           </Typography>
         </section>
-      </motion.section>
+      </section>
     </>
   );
 }
