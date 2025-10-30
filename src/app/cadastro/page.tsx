@@ -24,7 +24,7 @@ export default function CadastroPage() {
   };
 
   return (
-    <>
+    <div className="block md:hidden">
       {/* 🔹 Imagem com texto sobreposto e animação leve */}
       <section className="relative w-full h-[50vh] overflow-hidden">
         <div
@@ -33,7 +33,6 @@ export default function CadastroPage() {
         />
         <div className="absolute top-0 left-0 w-full h-full bg-black/40" />
 
-        {/* Texto animado sobre a imagem */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -58,42 +57,41 @@ export default function CadastroPage() {
         >
           {({ handleChange, handleBlur, values, isSubmitting }) => (
             <Form className="flex flex-col gap-4">
-              <Input
-                name="nome"
-                label="Nome completo"
-                value={values.nome}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
+
+              {/* Botões de login social */}
+              <div className="flex flex-col gap-2">
+                <Button variant="outlined" className="flex items-center justify-center gap-2">
+                  <FcGoogle size={22} /> Entrar com Google
+                </Button>
+
+                <Button variant="outlined" className="flex items-center justify-center gap-2 text-blue-600">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg"
+                    alt="Facebook"
+                    className="w-5 h-5"
+                  />
+                  Entrar com Facebook
+                </Button>
+              </div>
+
+              {/* Separador */}
+              <div className="flex items-center my-3">
+                <div className="flex-grow h-px bg-gray-300"></div>
+                <span className="px-2 text-gray-500 text-sm">ou</span>
+                <div className="flex-grow h-px bg-gray-300"></div>
+              </div>
+
+              {/* Inputs do formulário */}
+              <Input name="nome" label="Nome completo" value={values.nome} onChange={handleChange} onBlur={handleBlur} />
               <ErrorMessage name="nome" component="div" className="text-red-500 text-sm" />
 
-              <Input
-                name="email"
-                label="Email"
-                value={values.email}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
+              <Input name="email" label="Email" value={values.email} onChange={handleChange} onBlur={handleBlur} />
               <ErrorMessage name="email" component="div" className="text-red-500 text-sm" />
 
-              <Input
-                type="password"
-                name="senha"
-                label="Senha"
-                value={values.senha}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
+              <Input type="password" name="senha" label="Senha" value={values.senha} onChange={handleChange} onBlur={handleBlur} />
               <ErrorMessage name="senha" component="div" className="text-red-500 text-sm" />
 
-              <Input
-                type="password"
-                name="confirmacao"
-                label="Confirmar senha"
-                value={values.confirmacao}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
+              <Input type="password" name="confirmacao" label="Confirmar senha" value={values.confirmacao} onChange={handleChange} onBlur={handleBlur} />
               <ErrorMessage name="confirmacao" component="div" className="text-red-500 text-sm" />
 
               <Select
@@ -107,16 +105,6 @@ export default function CadastroPage() {
                 <Option value="ambos">Ambos</Option>
               </Select>
               <ErrorMessage name="tipoUsuario" component="div" className="text-red-500 text-sm" />
-
-              <Input
-                type="date"
-                name="nascimento"
-                label="Data de nascimento"
-                value={values.nascimento}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-              <ErrorMessage name="nascimento" component="div" className="text-red-500 text-sm" />
 
               <Input
                 name="cpfCnpj"
@@ -140,49 +128,20 @@ export default function CadastroPage() {
               />
               <ErrorMessage name="cpfCnpj" component="div" className="text-red-500 text-sm" />
 
-              <Input
-                name="endereco"
-                label="Endereço"
-                value={values.endereco}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
+              <Input type="date" name="nascimento" label="Data de nascimento" value={values.nascimento} onChange={handleChange} onBlur={handleBlur} />
+              <ErrorMessage name="nascimento" component="div" className="text-red-500 text-sm" />
+
+              <Input name="endereco" label="Endereço" value={values.endereco} onChange={handleChange} onBlur={handleBlur} />
               <ErrorMessage name="endereco" component="div" className="text-red-500 text-sm" />
 
-            <Button type="submit" color="blue" disabled={isSubmitting}>
-              Criar conta
-            </Button>
-
-            {/* Separador antes das opções sociais */}
-            <div className="flex items-center my-3">
-              <div className="flex-grow h-px bg-gray-300"></div>
-              <span className="px-2 text-gray-500 text-sm">ou</span>
-              <div className="flex-grow h-px bg-gray-300"></div>
-            </div>
-
-            <div className="flex flex-col gap-2">
-              {/* Google */}
-              <Button variant="outlined" className="flex items-center justify-center gap-2">
-                <FcGoogle size={22} /> Entrar com Google
+              <Button type="submit" color="blue" disabled={isSubmitting}>
+                Criar conta
               </Button>
-
-              {/* Facebook */}
-              <Button variant="outlined" className="flex items-center justify-center gap-2 text-blue-600">
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg"
-                  alt="Facebook"
-                  className="w-5 h-5"
-                />
-                Entrar com Facebook
-              </Button>
-            </div>
-
-
-
             </Form>
           )}
         </Formik>
 
+        {/* Link de login */}
         <section className="text-center mt-4">
           <Typography variant="small" className="text-gray-600">
             Já possui uma conta?{" "}
@@ -192,6 +151,6 @@ export default function CadastroPage() {
           </Typography>
         </section>
       </section>
-    </>
+    </div>
   );
 }

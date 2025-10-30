@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function LivrosMobile({ livros, onSelectLivro, buscou }) {
+export default function LivrosMobile({ livros, onClickLivro, buscou }) {
   if (!buscou) return null;
   if (!livros || livros.length === 0) {
     return <p className="text-center mt-4">Nenhum livro encontrado 😕</p>;
@@ -19,7 +19,7 @@ export default function LivrosMobile({ livros, onSelectLivro, buscou }) {
             exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.3, delay: index * 0.05 }}
             className="bg-white shadow-md rounded-xl p-4 cursor-pointer hover:shadow-lg transition-all"
-            onClick={() => onSelectLivro(livro)}
+            onClick={() => onClickLivro(livro)}
           >
             <img
               src={livro.imagem || "/placeholder.png"}

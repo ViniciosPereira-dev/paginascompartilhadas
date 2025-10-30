@@ -2,7 +2,7 @@
 
 import { Typography } from "@material-tailwind/react";
 
-export function Footer() {
+export  default function Footer() {
   return (
     <footer className="w-full py-8 px-6 bg-blue-gray-900 ">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">

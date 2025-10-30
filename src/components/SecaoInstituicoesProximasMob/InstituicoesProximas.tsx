@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import {  Loader2, XCircle } from "lucide-react";
-import CardInstituicao from "../CardInstituicao/CardInstituicao";
+import CardInstituicao from "../CardInstituicaoMob/CardInstituicao";
 
 
 import {
@@ -69,7 +69,7 @@ export default function InstituicoesProximas() {
   };
 
   return (
-    <section className="w-full mt-8 flex flex-col items-center gap-8 bg-gray-50 p-4">
+    <section id="instituicoes" className="w-full mt-8 flex flex-col items-center gap-8 bg-gray-50 p-4">
       <Typography variant="h3" className="text-center text-gray-700 font-bold">
         Encontre instituições próximas de você
       </Typography>

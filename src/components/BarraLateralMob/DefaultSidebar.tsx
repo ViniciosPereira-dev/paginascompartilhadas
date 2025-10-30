@@ -22,8 +22,8 @@ import {
   Building2,
 } from "lucide-react";
 import styles from "./DefaultSidebar.module.css";
-import ButtonSingIn from "../ButtonSingIn/ButtonSingIn";
-import { LoginModal } from "../LoginModal/LoginModal";
+import ButtonSingIn from "../BtnCadastrarMob/ButtonSingIn";
+import { LoginModal } from "../LoginModalMob/LoginModal";
 
 export function DefaultSidebar() {
   const pathname = usePathname();
@@ -64,7 +64,7 @@ export function DefaultSidebar() {
   return (
     <Card className="w-full max-w-[18rem] min-h-screen p-3 shadow-xl shadow-blue-gray-900/5 rounded-none">
       {/* Cabeçalho */}
-      <div className="flex flex-col items-center py-6 border-b border-blue-100">
+      <div className="flex flex-col items-center py-8 border-b border-blue-100">
         <div className="w-20 h-20 rounded-full overflow-hidden border border-gray-300">
           <img
             src="imagens/avatar.svg"
@@ -81,7 +81,7 @@ export function DefaultSidebar() {
       </div>
 
       {/* Lista de Navegação */}
-      <List className="p-0">
+      <List className="py-1 px-0">
         {links.map(({ href, label, icon: Icon, id }) => {
           const isRestricted = [
             "/doar",

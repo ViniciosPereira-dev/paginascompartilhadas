@@ -4,10 +4,9 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./Header.module.css";
-import NavLinks from "../NavLinks/NavLinks";
-import { LoginModal } from "../LoginModal/LoginModal";
-import ButtonSingIn from "../ButtonSingIn/ButtonSingIn";
-import { DefaultSidebar } from "../DefaultSidebar/DefaultSidebar";
+import { LoginModal } from "../LoginModalMob/LoginModal";
+import ButtonSingIn from "../BtnCadastrarMob/ButtonSingIn";
+import { DefaultSidebar } from "../BarraLateralMob/DefaultSidebar";
 
 
 
@@ -34,19 +33,8 @@ export default function Header() {
               className={styles.logo}
             />
           </Link>
-
         </div>
 
-        {/* NAV DESKTOP */}
-        <nav className={styles.navDesktop}>
-          <NavLinks />
-          <div className={styles.actions}>
-            <LoginModal/>
-            <ButtonSingIn />
-          </div>
-        </nav>
-
-        {/* BOTÃO HAMBURGUER */}
         <button
           className={`${styles.hamburger} ${menuOpen ? styles.active : ""}`}
           onClick={() => setMenuOpen(!menuOpen)}

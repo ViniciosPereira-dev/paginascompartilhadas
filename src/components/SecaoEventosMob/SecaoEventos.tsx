@@ -1,7 +1,7 @@
 "use client";
 import { Typography, Button } from "@material-tailwind/react";
 import Link from "next/link";
-import CarouselEventos from "../CarouselEventos/CarouselEventos";
+import CarouselEventos from "../CarouselEventosMob/CarouselEventos";
 import styles from "./SecaoEventos.module.css";
 
 export default function SecaoEventos({ eventos }) {
