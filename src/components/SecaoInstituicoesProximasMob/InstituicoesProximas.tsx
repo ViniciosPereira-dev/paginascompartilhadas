@@ -80,7 +80,6 @@ export default function InstituicoesProximas() {
             label="Digite seu CEP"
             value={cep}
             onChange={(e) => setCep(e.target.value)}
-            color="blue"
             className="pr-10"
           />
 
@@ -95,14 +94,17 @@ export default function InstituicoesProximas() {
           )}
         </div>
 
-        <Button
-          onClick={buscarInstituicoes}
-          color="blue"
-          className="px-8"
-          disabled={loading}
+
+      <Button type="submit"
+        onClick={buscarInstituicoes}
+        className="px-8"
+        disabled={loading}
         >
-          {loading ? "Buscando..." : "Buscar"}
-        </Button>
+        {loading ? 
+        "Buscando..." : "Buscar"}                      
+      </Button>          
+
+
       </div>
 
       {erro && (
@@ -115,7 +117,7 @@ export default function InstituicoesProximas() {
         <div className="flex flex-wrap justify-center gap-4 mt-4 min-h-[200px] transition-all duration-300">
           {loading && (
             <div className="flex flex-col items-center justify-center mt-4 animate-fadeIn">
-              <Loader2 className="h-10 w-10 text-blue-500 animate-spin" />
+              <Loader2 className="h-10 w-10 animate-spin" />
               <Typography color="gray">Carregando instituições...</Typography>
             </div>
           )}

@@ -9,6 +9,7 @@ export default function ButtonSingIn(){
       <Button
         title="Entrar"
         className="p-2 sm:p-3 rounded-full flex items-center justify-center"
+        fullWidth
       >
         <User size={22} />
       </Button>

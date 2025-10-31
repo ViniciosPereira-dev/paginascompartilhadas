@@ -50,7 +50,7 @@ export default function CardInstituicao({ inst }) {
         <Button
           ripple={false}
           fullWidth
-          className="bg-blue-500 text-white shadow-none hover:scale-105 hover:shadow-md focus:scale-105 active:scale-100 transition-transform"
+          className="text-white shadow-none hover:scale-105 hover:shadow-md focus:scale-105 active:scale-100 transition-transform"
         >
           Ver Perfil
         </Button>

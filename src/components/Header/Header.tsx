@@ -6,7 +6,7 @@ import Link from "next/link";
 import styles from "./Header.module.css";
 import { LoginModal } from "../LoginModalMob/LoginModal";
 import ButtonSingIn from "../BtnCadastrarMob/ButtonSingIn";
-import { DefaultSidebar } from "../BarraLateralMob/DefaultSidebar";
+import DefaultSidebar from "@/components/DefaultSidebar/DefaultSidebar";
 
 
 

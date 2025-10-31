@@ -40,6 +40,7 @@ export function LoginModal() {
         title="Entrar"
         onClick={handleOpen}
         className="p-2 sm:p-3 rounded-full flex items-center justify-center"
+        fullWidth
       >
         <LogIn size={22} />
       </Button>
